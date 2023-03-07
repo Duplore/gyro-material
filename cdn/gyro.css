@@ -4,7 +4,7 @@
    --mui--text-accent-secondary: rgba(255,255,255,.7);
    --mui--text-dark-secondary: rgba(0,0,0,.54);
    --mui--tooltip-background-color: #2e343e;
-   --mui--dark: #1e2328;
+   --mui--dark: #0f1014;
    --mui--text-white: #fff;
    --mui--warning: #efa012;
    --mui--primary: #2c58f9;
@@ -32,6 +32,13 @@ body {
 .mui-appbar .mui-appbar__brand {
   margin: 0 1.6em 0 0;
   font-size: 25px;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.mui-appbar .mui-appbar__brand a {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .mui-appbar .mui-appbar__content .mui-appbar__section {
@@ -374,6 +381,10 @@ body {
   font-size: 27px;
 }
 
+.dark {
+  background-color: var(--mui--dark);
+}
+
 .primary {
   background-color: var(--mui--primary);
   color: var(--mui--text-white);
@@ -392,6 +403,18 @@ body {
 .warning {
   background-color: var(--mui--warning);
   color: #000;
+}
+
+.border {
+  border: 1px solid #fff;
+}
+
+.border.border-grey {
+  border-color: #82848b !important;
+}
+
+.background-transparent {
+  background-color: transparent !important;
 }
 
 .mui-dropdown .mui-dropdown__menu {
@@ -455,4 +478,35 @@ body {
   display: flex;
   align-items: center;
   box-sizing: border-box;
+}
+
+ img.avatar {
+  width: 45px;
+  user-select: none !important;
+  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
+  text-indent: -9999px;
+  overflow: hidden;
+  border-radius: 100px;
+}
+
+ div.avatar {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  width: 45px;
+  user-select: none !important;
+  font-size: 20px;
+  line-height: normal;
+  color: inherit;
+  box-sizing: border-box;
+  height: 45px;
+  min-width: 45px;
+  min-height: 45px;
 }
