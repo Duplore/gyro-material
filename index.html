@@ -1,2 +1,138 @@
-test 1234
-hahaaha
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+ <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+ <link href="waterly.css" rel="stylesheet" type="text/css" />
+ <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+ <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+</head>
+<style>
+.pre-code {
+  padding: 12px 2px;
+  font-family: monospace;
+  border-radius: 4px;
+}
+</style>
+<body>
+<div class="alert warning">THIS IS A WORK IN PROGRESS AND IS NOWHERE NEAR DONE</div>
+<nav class="mui-appbar mui--bg-dark">
+   <div class="mui-appbar__content">
+     <div class="mui-appbar__brand">Waterly</div>
+       <section class="mui-appbar__section">
+          <li class="mui-appbar__item"><a class="mui-appbar__link" href="#">Components</a></li>
+       </section>
+   </div>
+</nav>
+
+<div class="mui-container">
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<strong>this is bold text</strong>
+<small class="mui--block">This is small text</small>
+
+<br><br>
+<button class="mui-btn mui-btn--primary">Normal Button</button>
+<button class="mui-btn mui-btn--small mui-btn--primary">small button</button>
+<button class="mui-btn mui-btn--small mui-btn--primary mui-btn--raised">rasied button</button>
+<button class="mui-btn mui-btn--small mui-btn--primary mui-btn--fab"><span class="material-icons">add</span></button>
+<br>
+<button class="mui-btn mui-btn--primary">Button</button>
+<button class="mui-btn mui-btn--danger">Button</button>
+<button class="mui-btn mui-btn--success">Button</button>
+<button class="mui-btn mui-btn--accent">Button</button>
+<br><br>
+
+<div class="mui-dropdown">
+  <button class="mui-btn mui-btn--primary" data-mui-toggle="dropdown">
+    Dropdown
+  </button>
+  <ul class="mui-dropdown__menu">
+    <li><a href="#">Option 1</a></li>
+    <li><a href="#">Option 2</a></li>
+    <li><a href="#">Option 3</a></li>
+    <li><a href="#">Option 4</a></li>
+  </ul>
+</div>
+
+<br><br>
+
+<ul class="mui-tabs__bar">
+  <li class="mui__tab-item ripple-e mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-default-1">Tab-1</a></li>
+  <li class="mui__tab-item"><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Tab-2</a></li>
+  <li class="mui__tab-item"><a data-mui-toggle="tab" data-mui-controls="pane-default-3">Tab-3</a></li>
+   <div class="animated-border"></div>
+</ul>
+<div class="mui-tabs__pane mui--is-active" id="pane-default-1">Pane-1</div>
+<div class="mui-tabs__pane" id="pane-default-2">Pane-2</div>
+<div class="mui-tabs__pane" id="pane-default-3">Pane-3</div>
+
+
+<br><br>
+<label style="display: block;">HTML MARKUP</label>
+<pre class="pre-code mui--z1 mui--text-white" style="background-color:#444;">
+  &lt;div class="tooltip"&gt;
+    &lt;div class="tooltip-arrow"&gt;&lt;/div&gt;
+    this is a tooltip
+  &lt;/div&gt;
+</pre>
+<button style="margin-right: 1em;" data-tooltip="Tooltip text <span style='color: red;'>heyo! i can have HTML!</span>" data-tooltip-html="true" data-tooltip-spacing="10" data-tooltip-position="top">tooltip with html</button>
+
+<button data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="top">top</button>
+<button data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="right">right</button>
+<button data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="left">left</button>
+<button data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="bottom">bottom</button>
+
+
+
+<br><br><br>
+
+
+
+<button class="mui-btn mui-btn--primary open-dialog-btn" mui-data-target="dialog1">Open Dialog 1</button>
+
+<div id="dialog1" class="dialog">
+  <div class="mui__dialog-content">
+    <div class="mui__dialog-header">
+      Dialog 1
+    </div>
+    <div class="mui__dialog-body">
+     <p>This is the content for Dialog 1.</p>
+    </div>
+    <div class="mui__dialog-footer">
+      <button class="mui-btn close-dialog-btn mui-btn--primary">Agree</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<br><br>
+
+
+
+<div class="card">hio</div>
+
+
+<br><br><br>
+
+<div class="mui-normal-textfield">
+  <input id="placeholder-demo" autocomplete="off" class="mui__basic-input" required/>
+  <label for="placeholder-demo">Placeholder</label>
+</div>
+<br>
+<div class="mui-normal-textfield">
+  <input id="placeholder-demo" autocomplete="off" class="mui__basic-input bg-transparent" required/>
+  <label for="placeholder-demo">Placeholder</label>
+</div>
+
+
+<br><br>
+
+</div>
+<script src="waterly.js"></script>
+</body>
+</html>
