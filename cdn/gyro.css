@@ -5,6 +5,10 @@
    --mui--text-dark-secondary: rgba(0,0,0,.54);
    --mui--tooltip-background-color: #2e343e;
    --mui--dark: #1e2328;
+   --mui--text-white: #fff;
+   --mui--warning: #efa012;
+   --mui--primary: #2c58f9;
+   --mui-danger: #f55a4e;
 }
 
 body {
@@ -205,7 +209,6 @@ body {
    opacity: 1;
 }
 
-
 .tooltip-arrow::before {
   content: "";
   position: absolute;
@@ -338,4 +341,34 @@ body {
 
 .mui-ripple.mui--is-animating {
   transition: all .5s ease-in-out !important;
+}
+
+.alert {
+  background-color: #0f1014;
+  padding: 7px 15px;
+  margin: 4px;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: var(--mui--text-white);
+  border-radius: 4px;
+}
+
+.primary {
+  background-color: var(--mui--primary);
+  color: var(--mui--white);
+}
+
+.success {
+  background-color: var(--mui--success);
+  color: #000;
+}
+
+.danger {
+  background-color: var(--mui--danger);
+  color: var(--mui--white);
+}
+
+.warning {
+  background-color: var(--mui--warning);
+  color: #000;
 }

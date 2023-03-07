@@ -3,7 +3,7 @@
 <head>
 <title>Page Title</title>
  <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
- <link href="/gyro-material/cdn/gyro.css" rel="stylesheet" type="text/css" />
+ <link href="waterly.css" rel="stylesheet" type="text/css" />
  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
  <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
@@ -14,12 +14,19 @@
   font-family: monospace;
   border-radius: 4px;
 }
+
+.custom-alert-for-site {
+  border-radius: 0;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
 </style>
 <body>
-<div class="alert warning">THIS IS A WORK IN PROGRESS AND IS NOWHERE NEAR DONE</div>
+<div class="alert custom-alert-for-site warning">THIS IS A WORK IN PROGRESS AND IS NOWHERE NEAR DONE</div>
 <nav class="mui-appbar mui--bg-dark">
    <div class="mui-appbar__content">
-     <div class="mui-appbar__brand">Gyro</div>
+     <div class="mui-appbar__brand">Waterly</div>
        <section class="mui-appbar__section">
           <li class="mui-appbar__item"><a class="mui-appbar__link" href="#">Components</a></li>
        </section>
@@ -133,6 +140,6 @@
 <br><br>
 
 </div>
-<script src="/gyro-material/cdn/gyro.js"></script>
+<script src="waterly.js"></script>
 </body>
 </html>
