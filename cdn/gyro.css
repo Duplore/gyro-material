@@ -8,7 +8,7 @@
    --mui--text-white: #fff;
    --mui--warning: #efa012;
    --mui--primary: #2c58f9;
-   --mui-danger: #f55a4e;
+   --mui--danger: #f55a4e;
 }
 
 body {
@@ -345,17 +345,38 @@ body {
 
 .alert {
   background-color: #0f1014;
-  padding: 7px 15px;
+  padding: 5px 15px;
   margin: 4px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
   font-size: 15px;
   box-sizing: border-box;
+  font-weight: 500;
   color: var(--mui--text-white);
   border-radius: 4px;
 }
 
+.alert .alert__content {
+  display: block;
+  font-weight: 500;
+  width: 100%;
+}
+
+.alert .alert__content .alert__title {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.alert .icon {
+  margin: 0 11px 0 0;
+  font-size: 27px;
+}
+
 .primary {
   background-color: var(--mui--primary);
-  color: var(--mui--white);
+  color: var(--mui--text-white);
 }
 
 .success {
@@ -365,7 +386,7 @@ body {
 
 .danger {
   background-color: var(--mui--danger);
-  color: var(--mui--white);
+  color: var(--mui--text-white);
 }
 
 .warning {
