@@ -372,3 +372,66 @@ body {
   background-color: var(--mui--warning);
   color: #000;
 }
+
+.mui-dropdown .mui-dropdown__menu {
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  box-sizing: border-box;
+  left: 0;
+  transform-origin: top left;
+  transform: scale(.8);
+  pointer-events: none;
+  transition: opacity .2s ease-in-out, transform .3s cubic-bezier(0.18, 0.51, 0.24, 1.1);
+  padding: 0;
+  display: inherit !important;
+}
+
+.mui-dropdown .mui-dropdown__menu.mui--is-open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.mui-dropdown.mui-dropdown--up .mui-dropdown__menu {
+  bottom: 100%;
+  top: inherit;
+  transform-origin: bottom left;
+}
+
+.mui-dropdown.mui-dropdown--up .mui-dropdown__menu.mui-dropdown__menu--right  {
+  transform-origin: bottom right;
+}
+
+.mui-dropdown .mui-dropdown__menu.mui-dropdown__menu--right {
+  transform-origin: top right;
+  right: 0;
+  left: inherit;
+}
+
+.mui-dropdown.mui-dropdown--right .mui-dropdown__menu {
+  left: 100%;
+  transform-origin: top left;
+}
+
+.mui-dropdown.mui-dropdown--right .mui-dropdown__menu.mui-dropdown__menu--bottom {
+  transform-origin: bottom left;
+}
+
+.mui-dropdown.mui-dropdown--left .mui-dropdown__menu {
+  right: 100%;
+  left: inherit;
+  transform-origin: top right;
+}
+
+.mui-dropdown.mui-dropdown--left .mui-dropdown__menu.mui-dropdown__menu--bottom {
+  transform-origin: bottom right;
+}
+
+ .mui-dropdown .mui-dropdown__menu li a {
+  padding: 8px 15px;
+  transition: all .2s ease;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
