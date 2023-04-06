@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --font-family: 'Noto Sans', sans-serif;
   --gyro--cyan: #2faf97;
   --gyro--dark: #313742;
-  --tooltip-background-color: #e3e6eb;
+  --tooltip-background-color: #141414;
+  --tooltip-text-color: #ffff;
   --gyro--success: #2fa765;
   --gyro--light: #dee2e6;
   --gyro--warning: #d3a641;
@@ -124,12 +126,13 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 }
 
 @keyframes ripple {
-   from {
-       transform: scale(0);
-   }
-   to {
-       transform: scale(1);
-   }
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
 .elevation-0 {
@@ -272,7 +275,7 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 
 /* if you want you can update the ripple color if you want a other color for a custom style! */
 .gyro__tab-container .gyro__tab-item.gyro--is-active .ripple {
-  background-color:  rgb(66 127 237 / 33%);
+  background-color: rgb(66 127 237 / 33%);
 }
 
 .animated-border {
@@ -458,7 +461,7 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 .tooltip {
   position: absolute;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 140ms cubic-bezier(0.78, 0.38, 0.37, 0.79);
   background-color: var(--tooltip-background-color);
   padding: 5px 12px;
   border-radius: 3px;
@@ -470,46 +473,18 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   white-space: normal;
   max-width: 320px;
   pointer-events: none !important;
-  color: #14141a;
+  color: var(--tooltip-text-color);
   word-break: normal;
+  transform: scale(0.8);
 }
 
 .tooltip.show {
   opacity: 1;
+  transform: scale(1);
 }
 
-.tooltip-arrow::before {
-  content: "";
-  position: absolute;
-  border: 8px solid transparent;
-}
-
-.tooltip-arrow.arrow-top:before {
-  bottom: 100%;
-  left: 50%;
-  margin-left: -8px;
-  border-bottom-color: var(--tooltip-background-color);
-}
-
-.tooltip-arrow.arrow-bottom:before {
-  top: 100%;
-  left: 50%;
-  margin-left: -8px;
-  border-top-color: var(--tooltip-background-color);
-}
-
-.tooltip-arrow.arrow-left:before {
-  right: 100%;
-  top: 50%;
-  margin-top: -8px;
-  border-right-color: var(--tooltip-background-color);
-}
-
-.tooltip-arrow.arrow-right:before {
-  left: 100%;
-  top: 50%;
-  margin-top: -8px;
-  border-left-color: var(--tooltip-background-color);
+.tooltip-arrow {
+  display: none;
 }
 
 .alert {
