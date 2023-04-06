@@ -39,28 +39,44 @@ $(document).ready(function() {
   });
 
 // tabs js
-  document.addEventListener("DOMContentLoaded", function() {
-      const tabLinks = document.querySelectorAll(".mui__tab-item");
-      const animatedBorder = document.querySelector(".animated-border");
+document.addEventListener("DOMContentLoaded", function() {
+  const tabLinks = document.querySelectorAll(".gyro__tab-item");
+  const animatedBorder = document.querySelector(".animated-border");
+  const tabContents = document.querySelectorAll(".tab-content");
 
-      // Get the active tab
-      const activeTab = document.querySelector(".mui--is-active");
+  // Get the active tab
+  const activeTab = document.querySelector(".gyro--is-active");
+  const activeTabIndex = Array.from(tabLinks).indexOf(activeTab);
+  const activeTabContent = document.querySelector(`#${activeTab.dataset.tabTarget}`);
 
-      // Set the initial width and left position of the animated border
-      animatedBorder.style.width = `${activeTab.offsetWidth}px`;
-      animatedBorder.style.left = `${activeTab.offsetLeft}px`;
+  // Set the initial width and left position of the animated border
+  animatedBorder.style.width = `${activeTab.offsetWidth}px`;
+  animatedBorder.style.left = `${activeTab.offsetLeft}px`;
 
-      tabLinks.forEach(link => {
-        link.addEventListener("click", e => {
-          tabLinks.forEach(link => link.classList.remove("mui--is-active"));
-          e.target.classList.add("mui--is-active");
+  // Show the active tab content
+  activeTabContent.classList.add("tab-active");
 
-          // Update the width and left position of the animated border
-          animatedBorder.style.width = `${e.target.offsetWidth}px`;
-          animatedBorder.style.left = `${e.target.offsetLeft}px`;
-        });
-      });
+  tabLinks.forEach((link, index) => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const clickedTab = e.target;
+      const clickedTabIndex = Array.from(tabLinks).indexOf(clickedTab);
+      const clickedTabContent = document.querySelector(`#${clickedTab.dataset.tabTarget}`);
+
+      tabLinks.forEach(link => link.classList.remove("gyro--is-active"));
+      clickedTab.classList.add("gyro--is-active");
+
+      // Update the width and left position of the animated border
+      animatedBorder.style.width = `${clickedTab.offsetWidth}px`;
+      animatedBorder.style.left = `${clickedTab.offsetLeft}px`;
+
+      // Show the clicked tab content
+      tabContents.forEach(content => content.classList.remove("tab-active"));
+      clickedTabContent.classList.add("tab-active");
     });
+  });
+});
+
 
 
 // tooltip js
@@ -192,22 +208,134 @@ $(document).ready(function() {
 
 //textfield mod
 $(document).ready(function() {
-  $('.mui__basic-input').on('focus', function() {
-    $(this).prev('label').addClass('mui__textfield-active');
-    $(this).parent('.mui-normal-textfield').addClass('mui__textfield-active');
+  // Add 'textfield-active' class when input is focused
+  $('.basic-input').on('focus', function() {
+    $(this).prev('label').addClass('textfield-active');
+    $(this).parent('.normal-textfield').addClass('textfield-active');
   });
 
-  $('.mui__basic-input').on('blur', function() {
+  // Remove 'textfield-active' class when input is blurred and has no value
+  $('.basic-input').on('blur', function() {
     if (!$(this).val()) {
-      $(this).prev('label').removeClass('mui__textfield-active');
-      $(this).parent('.mui-normal-textfield').removeClass('mui__textfield-active');
+      $(this).prev('label').removeClass('textfield-active');
+      $(this).parent('.normal-textfield').removeClass('textfield-active');
     }
   });
 
-  $('.mui__basic-input').each(function() {
+  // Add 'textfield-active' class to inputs with values on page load
+  $('.basic-input').each(function() {
     if ($(this).val()) {
-      $(this).prev('label').addClass('mui__textfield-active');
-      $(this).parent('.mui-normal-textfield').addClass('mui__textfield-active');
+      $(this).prev('label').addClass('textfield-active');
+      $(this).parent('.normal-textfield').addClass('textfield-active');
     }
+  });
+
+  // Create label dynamically based on data-placeholder attribute
+  $('.normal-textfield').each(function() {
+    var placeholderText = $(this).find('.basic-input').attr('data-placeholder');
+    $(this).prepend('<label class="textfield-label">' + placeholderText + '</label>');
+  });
+});
+
+
+
+
+//dropdown js
+$(document).ready(function() {
+  $("[data-toggle-menu]").on("click", function(event) {
+    event.stopPropagation();
+    var menuId = $(this).data("toggle-menu");
+    var autocloseType = $(this).data("autoclose");
+    $(".menu-content").not("[data-menu='" + menuId + "']").parent().removeClass("active");
+    $("[data-menu='" + menuId + "']").parent().toggleClass("active");
+    if (autocloseType === "inside") {
+      $("[data-menu='" + menuId + "']").parent().find(".menu-content").on("click", function(event) {
+        event.stopPropagation();
+      });
+      $(document).on("click", function(event) {
+        if (!$(event.target).closest("[data-menu='" + menuId + "']").length) {
+          $("[data-menu='" + menuId + "']").parent().removeClass("active");
+        }
+      });
+    } else {
+      $(document).on("click", function(event) {
+        if (!$(event.target).closest(".menu.active").length) {
+          $(".menu").removeClass("active");
+        }
+      });
+      $("[data-menu='" + menuId + "']").parent().find(".menu-content").on("click", function(event) {
+        event.stopPropagation();
+        $(".menu").removeClass("active");
+      });
+    }
+  });
+});
+
+
+
+//ripple js
+let rippleTimer = null;
+
+$(".ripple-effect").on("mousedown touchstart", function(e) {
+    let rect = this.getBoundingClientRect();
+    let radius = findFurthestPoint(e.clientX || e.originalEvent.touches[0].clientX, this.offsetWidth, rect.left, e.clientY || e.originalEvent.touches[0].clientY, this.offsetHeight, rect.top);
+
+    let circle =  document.createElement("div");
+    circle.classList.add("ripple");
+
+    circle.style.left = (e.clientX || e.originalEvent.touches[0].clientX) - rect.left - radius + "px";
+    circle.style.top = (e.clientY || e.originalEvent.touches[0].clientY) - rect.top - radius + "px";
+    circle.style.width = circle.style.height = radius * 2 + "px";
+
+    $(this).append(circle);
+
+    // Set the timer for the ripple effect
+    rippleTimer = setTimeout(() => {
+        rippleTimer = null;
+    }, 300);
+});
+
+$(".ripple-effect").on("mouseup mouseleave touchend touchcancel", function() {
+    // Clear the timer if the trigger is released
+    clearTimeout(rippleTimer);
+
+    let ripple = $(this).find(".ripple");
+    if (ripple.length != 0) {
+        ripple.css("transition", "opacity 300ms linear");
+        ripple.css("opacity", "0");
+        setTimeout(() => {
+            ripple.remove();
+        }, 300);
+    }
+});
+
+function findFurthestPoint(clickPointX, elementWidth, offsetX, clickPointY, elementHeight, offsetY) {
+    let x = clickPointX - offsetX > elementWidth / 2 ? 0 : elementWidth;
+    let y = clickPointY - offsetY > elementHeight / 2 ? 0 : elementHeight;
+    let d = Math.hypot(x - (clickPointX - offsetX), y - (clickPointY - offsetY));
+    return d;
+}
+
+//drawer
+$(document).ready(function() {
+  $('[data-drawer]').click(function() {
+    var drawerID = $(this).data('drawer');
+    $(drawerID).toggleClass('open');
+    if ($(drawerID).hasClass('open')) {
+      $('body').css('overflow', 'hidden');
+      $('<div class="backdrop"></div>').appendTo('body').fadeIn();
+    } else {
+      $('body').css('overflow', 'auto');
+      $('.backdrop').fadeOut(function() {
+        $(this).remove();
+      });
+    }
+  });
+  $('body').on('click', '.backdrop', function() {
+    $('.drawer').removeClass('open');
+    $('body').css('overflow', 'auto');
+    $(this).fadeOut(function() {
+      $(this).remove();
+    });
   });
 });
