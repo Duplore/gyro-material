@@ -2,30 +2,41 @@
 <html>
 <head>
  <title>Gyro</title>
-  <link href="/gyro-material/cdn/gyro.css" rel="stylesheet" type="text/css" />
+  <link href="/cdn/gyro.css" rel="stylesheet" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap-grid.css" /><!-- this is important! -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 <body>
+
+
 <appbar>
   <div class="appbar-content">
        <div class="appbar-trigger"></div>
     <a class="appbar-brand" href="#">Gyro</a>
      <ul class="appbar-ul">
        <li class="appbar-item"><a class="appbar-link ripple-effect" href="#">Components</a></li>
+       <li class="appbar-item"><a class="appbar-link ripple-effect" href="#">Components</a></li>
+       <li class="appbar-item"><a class="appbar-link ripple-effect" href="#">Components</a></li>
+     </ul>
+     <ul class="appbar-ul appbar-ul__end">
+       <li class="appbar-item"><a class="appbar-link ripple-effect" href="#">Components</a></li>
      </ul>
   </div>
 </appbar>
+
+
   <div class="container mt-5">
 
-<div class="alert primary"><span class="material-icons alert-icon">waving_hand</span> <div class="alert-content">a cool alert!</div></div>
+<div class="alert primary"><div class="alert-content">a cool alert!</div></div>
 <div class="alert success"><div class="alert-content">a cool alert!</div></div>
 <div class="alert warning"><div class="alert-content">a cool alert!</div></div>
 <div class="alert danger"><div class="alert-content">a cool alert!</div></div>
 <div class="alert dark">
-   <div class="alert-content">
-      alert
+  <div class="alert-content">
+    alert
        <small class="d-block fs-6">alert small text</small>
    </div>
 </div>
@@ -49,65 +60,148 @@
 
 
 
-    <button class="button ripple-dark ripple-effect">Normal</button>
-    <a href="#" class="button success ripple-dark ripple-effect">link</a>
-
-
-<div class="menu">
-  <button class="button dark ripple-effect" data-toggle-menu="toggle-menu-1" data-autoclose="inside" data-menu-offset="10px">Dropdown</button>
-  <div class="menu-content" data-menu="toggle-menu-1">
-    <a class="menu-link ripple-effect" href="#">Option 1</a>
-    <a class="menu-link ripple-effect" href="#">Option 2</a>
-    <a class="menu-link ripple-effect" href="#">Option 3</a>
-  </div>
-</div>
-
-<div class="menu">
-  <button class="button dark ripple-effect" data-toggle-menu="toggle-menu-2" data-autoclose="outside">Dropdown</button>
-  <div class="menu-content" data-menu="toggle-menu-2">
-    <a class="menu-link ripple-effect" href="#">Option 1</a>
-    <a class="menu-link ripple-effect" href="#">Option 2</a>
-    <a class="menu-link ripple-effect" href="#">Option 3</a>
-  </div>
-</div>
-
-<div class="menu">
-  <button class="button dark ripple-effect" data-toggle-menu="toggle-menu-3" data-autoclose="outside">Dropdown</button>
-  <div class="menu-content" data-menu="toggle-menu-3" data-menu-position="right">
-    <a class="menu-link ripple-effect" href="#">Option 1</a>
-    <a class="menu-link ripple-effect" href="#">Option 2</a>
-    <a class="menu-link ripple-effect" href="#">Option 3</a>
-  </div>
-</div>
-
-<div class="menu">
-  <button class="button dark ripple-effect" data-toggle-menu="toggle-menu-4" data-autoclose="outside">Dropdown</button>
-  <div class="menu-content" data-menu="toggle-menu-4" data-menu-position="left">
-    <a class="menu-link ripple-effect" href="#">Option 1</a>
-    <a class="menu-link ripple-effect" href="#">Option 2</a>
-    <a class="menu-link ripple-effect" href="#">Option 3</a>
-  </div>
-</div>
+<button class="button ripple-dark ripple-effect">Normal</button>
 
 
 
+<a href="#" class="button success ripple-dark ripple-effect">I'm a link!</a>
 
-
-    <div class="gyro__tab-container mt-4">
-     <a href="#" class="gyro__tab-item ripple-effect gyro--is-active" data-tab-target="tab1">Tab 1</a>
-      <a href="#" class="gyro__tab-item ripple-effect" data-tab-target="tab2">Tab 2</a>
-       <a href="#" class="gyro__tab-item ripple-effect" data-tab-target="tab3">Tab 3</a>
-        <span class="animated-border"></span>
-     </div>
-
-      <div id="tab1" class="tab-content tab-active">Tab 1 content</div>
-      <div id="tab2" class="tab-content">Tab 2 content</div>
-      <div id="tab3" class="tab-content">Tab 3 content</div>
 
 <br><br>
+
+<button class="button outlined ripple-effect">outlined</button>
+
+
+
+
+
+
+<br><br><br>
+
+<div class="menu me-5">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-1" data-autoclose="inside">cannot be closed by inside</button>
+  <div class="menu-content" data-menu-position="bottom left" data-menu="toggle-menu-1">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+
+<div class="menu me-5">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-cover">normal menu</button>
+  <div class="menu-content" data-menu="toggle-menu-cover">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+
+
+
+<div class="menu">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-2">bottom left</button>
+  <div class="menu-content" data-menu="toggle-menu-2" data-menu-position="bottom left">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+<div class="menu">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-3">bottom right</button>
+  <div class="menu-content" data-menu="toggle-menu-3" data-menu-position="bottom right">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="menu ms-5">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-4">top left</button>
+  <div class="menu-content" data-menu="toggle-menu-4" data-menu-position="top left">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+<div class="menu">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-5">top right</button>
+  <div class="menu-content" data-menu="toggle-menu-5" data-menu-position="top right">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="menu ms-5">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-6">left</button>
+  <div class="menu-content" data-menu="toggle-menu-6" data-menu-position="left">
+    <a class="menu-link ripple-effect" href="#">Option 1</a>
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+
+<div class="menu">
+  <button class="button ripple-effect" data-toggle-menu="toggle-menu-7">right</button>
+  <div class="menu-content" data-menu="toggle-menu-7" data-menu-position="right">
+    <a class="menu-link ripple-effect" href="#">Option 2</a>
+    <a class="menu-link ripple-effect" href="#">Option 3</a>
+  </div>
+</div>
+<br><br><br><br>
+
+
+
+
+<nav class="tab-bar">
+  <li data-tab-target="tab1" class="tab-bar-item tab-is-active"><a class="tab-bar-link ripple-effect" href="#">First tab item</a></li>
+   <li data-tab-target="tab2" class="tab-bar-item"><a class="tab-bar-link ripple-effect" href="#">First tab item</a></li>
+    <li data-tab-target="tab3" class="tab-bar-item"><a class="tab-bar-link ripple-effect" href="#">First tab item</a></li>
+</nav>
+
+<br>
+
+<nav class="tab-bar tab-bar-pill">
+  <li data-tab-target="tab1" class="tab-bar-item tab-is-active"><a class="tab-bar-link" href="#">First tab item</a></li>
+   <li data-tab-target="tab2" class="tab-bar-item"><a class="tab-bar-link" href="#">First tab item</a></li>
+    <li data-tab-target="tab3" class="tab-bar-item"><a class="tab-bar-link" href="#">First tab item22222222222</a></li>
+</nav>
+
+<div class="tab-content mt-3">
+   <div class="tab-item" id="tab1">e
+   </div>
+   <div class="tab-item" id="tab2">a
+   </div>
+   <div class="tab-item" id="tab3">1
+   </div>
+</div>
+
+
+
+
+
+
+
+<br><br><br><br>
   <button class="button ripple-effect ripple-dark" style="margin-right: 1em;" data-tooltip="Tooltip text <span style='color: red;'>heyo! i can have HTML!</span>" data-tooltip-html="true" data-tooltip-spacing="10" data-tooltip-position="top">tooltip with html</button>
 
-  <button class="button ripple-effect ripple-dark" data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="top">top</button>
+  <button class="button ripple-effect ripple-dark" type="button" data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="top">top</button>
   <button class="button ripple-effect ripple-dark" data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="right">right</button>
   <button class="button ripple-effect ripple-dark" data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="left">left</button>
   <button class="button ripple-effect ripple-dark" data-tooltip="Tooltip text" data-tooltip-spacing="10" data-tooltip-position="bottom">bottom</button>
@@ -127,6 +221,6 @@
 
 </div>
 
-<script src="/gyro-material/cdn/gyro.js"></script>
+<script src="/cdn/gyro.js"></script>
 </body>
 </html>

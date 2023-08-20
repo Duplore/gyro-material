@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-  --font-family: 'Noto Sans', sans-serif;
+  --font-family: 'Roboto', sans-serif;
   --gyro--cyan: #2faf97;
   --gyro--dark: #313742;
+  --gyro--white: #fff;
   --tooltip-background-color: #e3e6eb;
   --gyro--success: #2fa765;
   --gyro--light: #dee2e6;
@@ -37,7 +37,7 @@ appbar {
   box-sizing: border-box;
   background-color: var(--gyro--dark);
   min-height: 50px;
-  color: var(--bs-body-bg);
+  color: var(--gyro--light);
 }
 
 appbar .appbar-content {
@@ -85,7 +85,7 @@ appbar .appbar-content .appbar-item {
 appbar .appbar-content .appbar-item .appbar-link {
   text-decoration: none !important;
   border-radius: 3px;
-  color: var(--bs-gray-500);
+  color: var(--gyro--light);
   font-weight: 400;
   min-height: 36px;
   display: flex;
@@ -97,7 +97,7 @@ appbar .appbar-content .appbar-item .appbar-link {
 
 appbar .appbar-content .appbar-item .appbar-link:hover,
 appbar .appbar-content .appbar-item .appbar-link:focus {
-  color: var(--bs-gray-200);
+  color: var(--gyro--light);
 }
 
 
@@ -163,136 +163,109 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 .dark {
   background-color: var(--gyro--dark);
 }
-
+/* buttons */
 .button {
-  background-color: #dee2e6;
-  color: #2d303a;
-  border-radius: 4px;
-  border: 0 solid transparent;
-  text-decoration: none;
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: all .2s ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 4.3px;
+  background-color: var(--gyro--light);
+  color: var(--gyro--dark);
+  min-height: 35px;
   font-family: var(--font-family);
+  padding: 3px 12px;
+  font-size: 16px;
   cursor: pointer;
-  min-height: 32px;
-  box-shadow: var(--elevation-1);
-  display: inline-flex;
+  width: max-content;
+  text-decoration: none;
+  margin: 0.2rem;
+  transition: all .2s ease-out;
   align-items: center;
-  font-size: 15.5px;
-  margin: 5px;
-  padding: 0 1em;
+  justify-content: center;
+  border: none;
+  display: inline-flex;
+  user-select: none;
   outline: none !important;
 }
 
-.button.button-large {
-  padding: 0 1.2em;
-  font-size: 15.1px;
-  min-height: 35px;
+.button.outlined {
+  background-color: transparent;
+  color: #ccc;
+  border: 1px solid var(--gyro--light);
 }
 
-.button:hover,
-.button:focus {
-  background-color: #ced4da;
-  text-decoration: none;
-  box-shadow: 1px 2px 6px rgb(0 0 0 / 24%);
+.button.outlined:hover,
+.button.outlined:focus {
+  color: #fff;
+  border-color: var(--gyro--white);
 }
 
-.button.success {
-  background-color: var(--gyro--success);
-  color: var(--bs-body-bg);
-}
 
-.button.success:hover,
-.button.success:focus {
-  background-color: #2d975d;
-  color: var(--bs-body-bg);
-}
 
-.button.dark {
-  background-color: var(--gyro--dark);
-  color: var(--bs-body-bg);
-}
-
-.button.dark:hover,
-.button.dark:focus {
-  background-color: #272932;
-  color: var(--bs-body-bg);
-}
-
-.button.primary {
-  background-color: var(--gyro--primary);
-  color: #2d303a;
-}
-
-.button.primary:hover,
-.button.primary:focus {
-  background-color: #578ec5;
-  color: #2d303a;
-}
-
-.button.button-small {
-  font-size: 14px;
-  min-height: 30px;
-}
 
 /* Components */
-
-.gyro__tab-container {
-  position: relative;
+.tab-bar {
   display: flex;
   width: 100%;
-  border-bottom: 1px solid #3d414c;
+  box-sizing: border-box;
+  border-bottom: 1px solid #6e7279;
+  position: relative;
 }
 
-.gyro__tab-container .gyro__tab-item {
+.tab-bar.tab-bar-pill .tab-bar-indicator {
+  top: 50%;
+  height: auto;
+  border-radius: 4px;
+  background-color: #373a44;
+  min-height: 35px;
+  transform: translateY(-50%);
+}
+
+
+.tab-bar .tab-bar-item {
+  list-style: none;
+  display: block;
+  position: relative;
+  min-height: 48px;
+  z-index: 25;
+}
+
+.tab-bar .tab-bar-item .tab-bar-link {
+  color: var(--gyro--light);
   text-decoration: none;
-  font-family: var(--font-family);
-  min-height: 40px;
+  cursor: pointer;
+  min-height: 48px;
+  z-index: 25;
+  position: relative;
+  user-select: none;
+  padding: 0.2rem 0.8rem;
   display: flex;
-  min-width: 150px;
-  transition: background-color .4s ease, color .2s ease, border 1s ease, padding .3s ease-in-out, min-width .3s ease-in-out;
-  justify-content: center;
   align-items: center;
-  padding: 0.3em 0.5em;
-  color: var(--bs-body-bg);
+  justify-content: center;
 }
 
-.gyro__tab-container .gyro__tab-item:hover {
-  background-color: rgb(255 255 255 / 10%);
+.tab-bar .tab-bar-item .tab-bar-link:hover,
+.tab-bar .tab-bar-item .tab-bar-link:focus {
+  color: var(--gyro--white);
 }
 
-.gyro__tab-container .gyro__tab-item.gyro--is-active {
-  color: #59a2f1;
-}
-
-.gyro__tab-container .gyro__tab-item.gyro--is-active:hover {
-  background-color: rgb(57 130 230 / 32%);
-}
-
-/* if you want you can update the ripple color if you want a other color for a custom style! */
-.gyro__tab-container .gyro__tab-item.gyro--is-active .ripple {
-  background-color:  rgb(66 127 237 / 33%);
-}
-
-.animated-border {
+.tab-bar .tab-bar-indicator {
+  height: 1.5px;
+  background-color: #fff;
   position: absolute;
   bottom: 0;
+  transition: width 459ms cubic-bezier(0.37, 0.85, 0.28, 1), height 459ms cubic-bezier(0.37, 0.85, 0.28, 1), left 522ms ease;
   left: 0;
-  height: 2px;
-  background-color: #59a2f1;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
 
-.tab-content {
+.tab-content .tab-item {
   display: none;
-  height: auto;
-  margin-top: 8px;
 }
 
-.tab-active {
+.tab-content .tab-item.tab-is-active {
   display: block;
 }
+
 
 .drawer {
   position: fixed;
@@ -383,45 +356,28 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 .menu {
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
 }
 
-.menu .button {
-  margin: 0;
-}
-
-.menu-content {
-  transform: scale3d(.9, .9, .9);
+.menu .menu-content {
   position: absolute;
-  left: 0;
-  top: 100%;
-  transform-origin: top left;
-  background-color: #31353e;
-  display: block;
-  border-radius: 2px;
+  top: 0;
+  border-radius: 4px;
+  z-index: 75;
+  transition: opacity 364ms cubic-bezier(0.36, 1.1, 0.58, 1), transform 239ms cubic-bezier(0.36, 0.77, 0.58, 1);
+  transform: scale3d(.9, .9, .9);
+  transform-origin: top;
+  width: inherit;
   overflow: hidden;
-  z-index: 250;
-  min-width: 160px;
+  display: block;
+  min-width: 131px;
   box-shadow: 1px 2px 6px rgb(0 0 0 / 24%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.36, 1.1, 0.58, 1), transform 239ms cubic-bezier(0.36, 0.77, 0.58, 1);
-}
-
-.menu-content .menu-link {
-  padding: 0.1em 1em;
-  text-decoration: none !important;
-  display: flex;
-  font-size: 15.2px;
-  align-items: center;
-  min-height: 40px;
-  color: #ced4da;
-  transition: background-color .2s ease, color .1s ease;
-}
-
-.menu-content .menu-link:hover,
-.menu-content .menu-link:focus {
-  background-color: rgb(228 230 231 / 11%);
-  color: #fff;
+  box-sizing: border-box;
+  height: auto;
+  background-color: #31353e;
+  padding: 0.4rem 0;
 }
 
 .menu.active .menu-content {
@@ -430,35 +386,97 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   pointer-events: auto;
 }
 
-.menu .menu-content[data-menu-position='right'] {
-  left: 100%;
-  bottom: 50%;
-  transform: translateY(50%) scale3d(.9, .9, .9);
-  transform-origin: left;
+.menu .menu-content .menu-link {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  min-height: 38px;
+  transition: background-color 226ms ease, color 206ms ease;
+  color: var(--gyro--light);
+  line-height: normal;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.2rem 0.9rem;
+}
+
+.menu .menu-content .menu-link:hover,
+.menu .menu-content .menu-link:focus {
+  color: var(--gyro--white);
+  background-color: rgb(172 178 185 / 13%);
+}
+
+.menu .menu-content[data-menu-position='top'] {
+  bottom: 100%;
   top: inherit;
 }
 
-.menu.active .menu-content[data-menu-position='right'] {
-  transform: translateY(50%) scale3d(1, 1, 1);
+.menu .menu-content[data-menu-position='top left'] {
+  bottom: 100%;
+  top: inherit;
+  left: 0;
+  transform-origin: bottom left;
+}
+
+.menu .menu-content[data-menu-position='top right'] {
+  bottom: 100%;
+  top: inherit;
+  left: inherit;
+  right: 0;
+  transform-origin: bottom right;
+}
+
+.menu .menu-content[data-menu-position='bottom'] {
+  top: 100%;
+}
+
+.menu .menu-content[data-menu-position='bottom left'] {
+  top: 100%;
+  left: 0;
+  transform-origin: top left;
+}
+
+.menu .menu-content[data-menu-position='bottom right'] {
+  top: 100%;
+  left: inherit;
+  right: 0;
+  transform-origin: top right;
 }
 
 .menu .menu-content[data-menu-position='left'] {
+  top: 50%;
   right: 100%;
-  bottom: 50%;
-  transform: translateY(50%) scale3d(.9, .9, .9);
-  transform-origin: right;
   left: inherit;
-  top: inherit;
+  transform: scale3d(.9, .9, .9) translateY(-50%);
+  transform-origin: right;
 }
 
 .menu.active .menu-content[data-menu-position='left'] {
-  transform: translateY(50%) scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1) translateY(-50%);
 }
+
+.menu .menu-content[data-menu-position='right'] {
+  top: 50%;
+  left: 100%;
+  transform: scale3d(.9, .9, .9) translateY(-50%);
+  transform-origin: left;
+}
+
+.menu.active .menu-content[data-menu-position='right'] {
+  transform: scale3d(1, 1, 1) translateY(-50%);
+}
+
+
+
+
+
+
+
 
 .tooltip {
   position: absolute;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 155ms ease;
   background-color: var(--tooltip-background-color);
   padding: 5px 12px;
   border-radius: 3px;
@@ -468,6 +486,7 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   box-sizing: border-box;
   box-shadow: 1px 2px 6px rgb(0 0 0 / 24%);
   white-space: normal;
+  transform: scale3d(.8, .8, .8);
   max-width: 320px;
   pointer-events: none !important;
   color: #14141a;
@@ -476,9 +495,11 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
 
 .tooltip.show {
   opacity: 1;
+  transform: scale3d(1, 1, 1);
 }
 
 .tooltip-arrow::before {
+  display: none;
   content: "";
   position: absolute;
   border: 8px solid transparent;
@@ -518,7 +539,7 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   background-color: var(--gyro--light);
   color: #14141a;
   display: flex;
-  margin: 0.3em 0;
+  margin: 0.5em 0;
   align-items: center;
   font-weight: 500;
   width: 100%;
@@ -561,89 +582,8 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   overflow: hidden;
 }
 
-.normal-textfield {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  margin: 5px;
-  width: max-content;
-}
-
-.normal-textfield.very-normal .basic-input {
-  border-radius: 4px;
-}
-
-.normal-textfield.very-normal::after,
-.normal-textfield.very-normal::before {
-  display: none !important;
-}
-
-.normal-textfield .basic-input {
-  outline: none !important;
-  padding: 11px 10px;
-  box-shadow: 1px 2px 6px rgb(0 0 0 / 24%);
-  box-sizing: border-box;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  color: #000;
-  font-size: 16px;
-  transition: background-color .3s ease-in-out, color .2s ease, padding .3s ease-in-out;
-  background-color: #e7ebed;
-  min-height: 47px;
-  border: none;
-}
-
-.normal-textfield::before {
-  width: 100%;
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #587693;
-  height: 2px;
-}
-
-.normal-textfield::after {
-  width: 0;
-  content: '';
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: center;
-  bottom: 0;
-  transition: all 140ms cubic-bezier(0.78, 0.38, 0.37, 0.79);
-  right: 0;
-  left: 0;
-  background-color: #5a87eb;
-  height: 2px;
-}
-
-.normal-textfield.textfield-active::after {
-  width: 100%;
-  transform: scaleX(1);
-}
-
-.normal-textfield .basic-input:hover,
-.normal-textfield .basic-input:focus,
-.normal-textfield.textfield-active .basic-input {
-  background-color: #fff;
-  padding: 20.4px 10px 0 10px;
-}
-
-.normal-textfield .textfield-label {
-  position: absolute;
-  color: #000;
-  font-weight: 500;
-  bottom: 50%;
-  transform: translateY(50%) translateX(10px);
-  font-size: 16px;
-  pointer-events: none !important;
-  transition: all 120ms cubic-bezier(0.78, 0.38, 0.37, 0.79);
-}
-
-.normal-textfield.textfield-active .textfield-label {
-  bottom: 33px;
-  font-size: 13px;
+.display-flex {
+  display: flex !important;
 }
 
 .card {
@@ -655,8 +595,24 @@ appbar .appbar-content .appbar-item .appbar-link:focus {
   padding: 9px;
 }
 
-.width-100 {
+.w-100 {
   width: 100% !important;
+}
+
+.flex-gap-1 {
+  gap: 0.3rem;
+}
+
+.flex-gap-2 {
+  gap: 0.6rem;
+}
+
+.background-transparent {
+  background-color: transparent !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
 .avatar {

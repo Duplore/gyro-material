@@ -39,43 +39,69 @@ $(document).ready(function() {
   });
 
 // tabs js
-document.addEventListener("DOMContentLoaded", function() {
-  const tabLinks = document.querySelectorAll(".gyro__tab-item");
-  const animatedBorder = document.querySelector(".animated-border");
-  const tabContents = document.querySelectorAll(".tab-content");
+$(document).ready(function() {
+    // Function to update the indicator position and width for each tab bar
+    function updateIndicatorPosition(indicator, activeTab) {
+      const activeTabPosition = activeTab.position().left;
+      const activeTabWidth = activeTab.outerWidth();
+      indicator.css({
+        left: activeTabPosition,
+        width: activeTabWidth,
+      });
+    }
 
-  // Get the active tab
-  const activeTab = document.querySelector(".gyro--is-active");
-  const activeTabIndex = Array.from(tabLinks).indexOf(activeTab);
-  const activeTabContent = document.querySelector(`#${activeTab.dataset.tabTarget}`);
+    // Create the tab-bar-indicator for each tab-bar
+    $(".tab-bar").each(function() {
+      const tabBar = $(this);
+      const tabItems = tabBar.find(".tab-bar-item");
+      const activeTab = tabBar.find(".tab-bar-item.tab-is-active");
+      const indicator = $("<div class='tab-bar-indicator'></div>");
 
-  // Set the initial width and left position of the animated border
-  animatedBorder.style.width = `${activeTab.offsetWidth}px`;
-  animatedBorder.style.left = `${activeTab.offsetLeft}px`;
+      // Add the tab-bar-indicator to the tab bar
+      tabBar.append(indicator);
 
-  // Show the active tab content
-  activeTabContent.classList.add("tab-active");
+      // Initialize the indicator position and width on page load for each tab bar
+      $(window).on("load", function() {
+        updateIndicatorPosition(indicator, activeTab);
 
-  tabLinks.forEach((link, index) => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const clickedTab = e.target;
-      const clickedTabIndex = Array.from(tabLinks).indexOf(clickedTab);
-      const clickedTabContent = document.querySelector(`#${clickedTab.dataset.tabTarget}`);
+        // Show the content of the initially active tab on page load for each tab bar
+        const targetTab = activeTab.attr("data-tab-target");
+        $(".tab-content .tab-item").removeClass("tab-is-active");
+        $("#" + targetTab).addClass("tab-is-active");
+      });
 
-      tabLinks.forEach(link => link.classList.remove("gyro--is-active"));
-      clickedTab.classList.add("gyro--is-active");
+      tabItems.click(function() {
+        const clickedTab = $(this); // Update the active tab on click
 
-      // Update the width and left position of the animated border
-      animatedBorder.style.width = `${clickedTab.offsetWidth}px`;
-      animatedBorder.style.left = `${clickedTab.offsetLeft}px`;
+        // Move the border indicator to the clicked tab for each tab bar
+        updateIndicatorPosition(indicator, clickedTab);
 
-      // Show the clicked tab content
-      tabContents.forEach(content => content.classList.remove("tab-active"));
-      clickedTabContent.classList.add("tab-active");
+        // Show the corresponding tab content for each tab bar
+        const targetTab = clickedTab.attr("data-tab-target");
+        $(".tab-content .tab-item").removeClass("tab-is-active");
+        $("#" + targetTab).addClass("tab-is-active");
+      });
+
+      // Handle window resize event for each tab bar
+      let resizeTimeout;
+      $(window).resize(function() {
+        clearTimeout(resizeTimeout);
+        // Delay updating indicator position and width to reduce frequent updates during resizing
+        resizeTimeout = setTimeout(function() {
+          updateIndicatorPosition(indicator, activeTab);
+        }, 250);
+      });
+
+      // Handle tab-bar scroll event for each tab bar (if there's a horizontal scrollbar)
+      tabBar.on("scroll", function() {
+        updateIndicatorPosition(indicator, activeTab);
+      });
     });
   });
-});
+
+
+
+
 
 
 
